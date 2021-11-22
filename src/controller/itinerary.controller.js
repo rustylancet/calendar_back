@@ -15,9 +15,9 @@ class ItineraryController {
   //获取当月行程
   async getItinerary(ctx, next) {
     const { user_id } = ctx.user;
-    console.log('///');
+    // console.log('///');
     const { timeFrom, timeEnd } = ctx.params;
-    console.log(timeFrom, timeEnd);
+    // console.log(timeFrom, timeEnd);
     const result = await itineraryService.getItinerary(timeFrom, timeEnd, user_id);
 
     ctx.body = util.success(util.format(result));

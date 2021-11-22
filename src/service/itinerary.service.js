@@ -22,7 +22,7 @@ class ItineraryService {
         SELECT * FROM itinerary 
         LEFT JOIN type ON itinerary.type_id = type.type_id
         WHERE ((start between ? and ?) OR (end between ? and ?)) 
-        AND user_id = ? `
+        AND itinerary.user_id = ? `
         const [resultSql] = await connection.execute(statement, [
             timeFrom, timeEnd, timeFrom, timeEnd, user_id
         ]).catch(err => {

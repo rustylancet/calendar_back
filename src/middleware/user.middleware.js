@@ -65,6 +65,7 @@ const verifyAuth = async (ctx, next) => {
   // 1.获取token
   const authorization = ctx.headers.authorization;
   if (!authorization) {
+    console.log('无授权');
     const error = new Error(errorTypes.UNAUTHORIZATION);
     return ctx.app.emit("error", error, ctx);
   }
@@ -77,7 +78,7 @@ const verifyAuth = async (ctx, next) => {
     });
 
     ctx.user = result;
-    console.log(result);
+    console.log('认证结果：', result);
     await next();
   } catch (err) {
     const error = new Error(errorTypes.UNAUTHORIZATION);
